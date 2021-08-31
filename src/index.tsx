@@ -1,12 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import './core/imports.css';
+import GlobalStyles from './core/globalStyles';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import GardenList from './app/views/GardenList.view';
+import PlantInsert from './app/views/PlantInsert.view';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <Switch>
+
+        <Route path="/garden" exact component={GardenList} />
+        <Route path="/garden/create" exact component={PlantInsert} />
+
+      </Switch>
+    </BrowserRouter>
+    <GlobalStyles />
   </React.StrictMode>,
   document.getElementById('root')
 );
