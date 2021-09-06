@@ -30,6 +30,12 @@ export namespace FarmTracker {
                 harvestTime: string
                 iconUrl: string
             }
+            PlantRequest: {
+                conta: string
+                codigoPlanta: string
+                nome: string
+                token: string
+            }
 
 
         }

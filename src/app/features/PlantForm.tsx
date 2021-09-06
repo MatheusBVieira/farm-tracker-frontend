@@ -1,13 +1,16 @@
 import { useState } from "react";
-import info from "../../core/utils/info"
 import styled from "styled-components"
-import UserService from "../../sdk/services/User.service";
 import TextInput from "../components/TextInput/TextInput";
+import PlantService from "../../sdk/services/Plant.service";
+import { useHistory } from "react-router";
 
 export default function PlantForm() {
     const [conta, setConta] = useState('')
     const [nome, setNome] = useState('')
-    const [endereco, setEndereco] = useState('')
+    const [codigoPlanta, setCodigoPlanta] = useState('')
+    const [token, setToken] = useState('')
+    
+    const history = useHistory();
 
     async function handleFormSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
@@ -15,14 +18,16 @@ export default function PlantForm() {
         const newPlant = {
             conta,
             nome,
+            codigoPlanta,
+            token
         }
 
-        await UserService.insertNewPlant(newPlant, endereco)
+        const plantResponse = await PlantService.insertNewPlant(newPlant)
 
-        info({
-            title: 'Planta salva com sucesso',
-            description: 'Você acabou de criar a planta'
-        })
+        if (plantResponse) {
+            history.goBack()
+        }
+
     }
 
     return <Wrapper onSubmit={handleFormSubmit} >
@@ -41,8 +46,14 @@ export default function PlantForm() {
         />
         <TextInput
             label="Endereço da planta"
-            value={nome}
-            onChange={e => setEndereco(e.currentTarget.value)}
+            value={codigoPlanta}
+            onChange={e => setCodigoPlanta(e.currentTarget.value)}
+            required
+        />
+        <TextInput
+            label="Token"
+            value={token}
+            onChange={e => setToken(e.currentTarget.value)}
             required
         />
         <Button type="submit">Criar</Button>
