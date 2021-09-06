@@ -2,6 +2,7 @@ import { useState } from "react";
 import info from "../../core/utils/info"
 import styled from "styled-components"
 import UserService from "../../sdk/services/User.service";
+import TextInput from "../components/TextInput/TextInput";
 
 export default function PlantForm() {
     const [conta, setConta] = useState('')
@@ -24,21 +25,26 @@ export default function PlantForm() {
         })
     }
 
-
     return <Wrapper onSubmit={handleFormSubmit} >
         <Title>Crie uma planta nova</Title>
-        <TextInput>
-            <span>Nome da planta</span>
-            <input onChange={e => setNome(e.currentTarget.value)} required></input>
-        </TextInput>
-        <TextInput>
-            <span>Informe sua conta</span>
-            <input onChange={e => setConta(e.currentTarget.value)} required></input>
-        </TextInput>
-        <TextInput>
-            <span>Endereço da planta</span>
-            <input onChange={e => setEndereco(e.currentTarget.value)} required></input>
-        </TextInput>
+        <TextInput
+            label="Nome da planta"
+            value={nome}
+            onChange={e => setNome(e.currentTarget.value)}
+            required
+        />
+        <TextInput
+            label="Informe sua conta"
+            value={nome}
+            onChange={e => setConta(e.currentTarget.value)}
+            required
+        />
+        <TextInput
+            label="Endereço da planta"
+            value={nome}
+            onChange={e => setEndereco(e.currentTarget.value)}
+            required
+        />
         <Button type="submit">Criar</Button>
     </Wrapper>
 }
@@ -52,21 +58,6 @@ const Wrapper = styled.form`
 
 const Title = styled.h2`
     margin: 8px 0;
-`
-
-const TextInput = styled.div`
-    display: flex;
-    flex-direction: column;
-
-    span {
-        margin: 8px 0;
-    }
-    
-    input {
-        padding: 4px;
-        font-size: 18px;
-        margin-bottom: 8px;
-    }
 `
 
 const Button = styled.button`

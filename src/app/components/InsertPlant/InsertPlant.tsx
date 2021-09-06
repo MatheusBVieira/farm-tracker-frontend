@@ -13,7 +13,7 @@ export default function InsertPlant() {
 }
 
 const Wrapper = styled.div`
-    width: 350px;
+    width: 400px;
     height: 100px;
     border: 1px solid rgba(26, 54, 126, 0.125);
     margin-bottom: 12px;

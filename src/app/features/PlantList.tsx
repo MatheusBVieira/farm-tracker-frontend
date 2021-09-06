@@ -2,20 +2,19 @@ import { useEffect } from "react"
 import { useState } from "react"
 import styled from "styled-components"
 import usePageTitle from "../../core/hooks/usePageTitle"
-import { User } from "../../sdk/@types"
-import UserService from "../../sdk/services/User.service"
+import PlantService from "../../sdk/services/Plant.service"
 import InsertPlant from "../components/InsertPlant/InsertPlant"
 import PlantView from "../components/PlantView"
+import { Plant } from "../../sdk/@types/Plant"
 
 
 export default function PlantList() {
-    const [user, setUser] = useState<User.User>()
+    const [plants, setPlants] = useState<Plant.Plant[]>()
 
     usePageTitle('Jardin')
 
     useEffect(() => {
-        UserService.getUser(1)
-            .then(setUser)
+        PlantService.getAllPlants().then(setPlants)
     }, [])
 
     return <Wrapper>
@@ -24,8 +23,16 @@ export default function PlantList() {
 
         <PlantContent>
             {
-                user?.plantas.map(u => {
-                    return <PlantView name={u.nome} conta={u.conta} plantId={u.idPlanta} waterTime={"10 min"} width={350} />
+               plants?.map(p => {
+                   return <PlantView
+                       name={p.nome}
+                       conta={p.conta}
+                       plantId={p.codigoPlanta}
+                       harvestTime={p.harvestTime}
+                       endTimeWater={p.endTimeWater}
+                       width={400}
+                       image={p.iconUrl}
+                   />
                 })
             }
         </PlantContent>
@@ -38,4 +45,5 @@ const Wrapper = styled.div``
 const PlantContent = styled.div`
     display: flex;
     gap: 12px;
+    flex-wrap: wrap;
 `

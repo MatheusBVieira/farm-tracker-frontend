@@ -20,6 +20,10 @@ export const HeaderContent = styled.div`
     flex-direction: column;
 `
 
+export const Span = styled.span`
+    font-size: 14px;
+`
+
 export const Infos = styled.div`
     display: flex;
     flex-direction: column;

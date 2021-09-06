@@ -6,12 +6,13 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import GardenList from './app/views/GardenList.view';
 import PlantInsert from './app/views/PlantInsert.view';
+import Login from './app/views/Login.view';
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <Switch>
-
+        <Route path="/" exact component={Login} />
         <Route path="/garden" exact component={GardenList} />
         <Route path="/garden/create" exact component={PlantInsert} />
 
