@@ -17,7 +17,7 @@ export interface PlantViewProps {
 function PlantView(props: PlantViewProps) {
     return <PV.Card width={props.width}>
         <PV.Header>
-            <img src={props.image} />
+            <img src={props.image} alt="imagem da planta" />
 
             <PV.HeaderContent>
                 <h2>{ props.name }</h2>

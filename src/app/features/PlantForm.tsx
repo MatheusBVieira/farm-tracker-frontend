@@ -62,7 +62,6 @@ export default function PlantForm() {
 
 const Wrapper = styled.form`
     width: 750px;
-    height: 350px;
     border: 1px solid rgba(26, 54, 126, 0.125);
     padding: 0 16px;
 `
@@ -78,6 +77,6 @@ const Button = styled.button`
     padding: 6px 12px;
     text-transform: none;
     border-radius: .25rem;
-    width: 10%;
-    margin-top: 8px;
+    width: 20%;
+    margin: 8px 0;
 `

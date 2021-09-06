@@ -35,13 +35,17 @@ export const Buttons = styled.div`
     grid-template-columns: repeat(2, 1fr);
 `
 
-export const ButtonContent = styled.div`
+export const ButtonContent = styled.a`
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 20px;
-    border-right: 1px solid rgba(26, 54, 126, 0.125);
+    cursor: pointer;
+    
+    &:first-child {
+        border-right: 1px solid rgba(26, 54, 126, 0.125);
+    }
 `
 
 
