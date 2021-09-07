@@ -40,7 +40,7 @@ export default function PlantForm() {
         />
         <TextInput
             label="Informe sua conta"
-            value={nome}
+            value={conta}
             onChange={e => setConta(e.currentTarget.value)}
             required
         />

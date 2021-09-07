@@ -27,8 +27,11 @@ class PlantService extends Service {
         return this.Http
             .post<Plant.PlantRequest>('/planta', plant)
             .then(this.getData)
+    }
 
-
+    static deletePlant(id: number) {
+        return this.Http
+            .delete('/planta/' + id)
     }
 
 

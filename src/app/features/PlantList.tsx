@@ -25,6 +25,7 @@ export default function PlantList() {
             {
                plants?.map(p => {
                    return <PlantView
+                       id={p.id}
                        name={p.nome}
                        conta={p.conta}
                        plantId={p.codigoPlanta}

@@ -3,8 +3,11 @@ import * as PV from './PlantView.styles'
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 import getDateForPlants from '../../../sdk/utils/getDateForPlants';
+import PlantService from '../../../sdk/services/Plant.service';
+import { useHistory } from 'react-router-dom';
 
 export interface PlantViewProps {
+    id: number
     name: string
     plantId: string
     conta: string
@@ -15,6 +18,14 @@ export interface PlantViewProps {
 }
 
 function PlantView(props: PlantViewProps) {
+    const history = useHistory();
+
+    async function handleDeletePlant(e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
+        await PlantService.deletePlant(props.id)
+        history.go(0)
+    }
+
+
     return <PV.Card width={props.width}>
         <PV.Header>
             <img src={props.image} alt="imagem da planta" />
@@ -35,7 +46,7 @@ function PlantView(props: PlantViewProps) {
                     <EditIcon fontSize="large" />
                     <span> Editar Planta </span>
                 </PV.ButtonContent>
-                <PV.ButtonContent>
+                <PV.ButtonContent onClick={handleDeletePlant}>
                     <DeleteIcon fontSize="large" />
                     <span> Excluir Planta </span>
                 </PV.ButtonContent>
