@@ -11,6 +11,6 @@ function getData<T> (res: AxiosResponse<T>) {
   return res.data
 }
 
-Http.defaults.baseURL = 'http://localhost:8080'
+Http.defaults.baseURL = 'https://plantvslag.herokuapp.com'
 
 export default Service
